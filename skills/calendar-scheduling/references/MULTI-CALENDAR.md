@@ -63,7 +63,8 @@ Credentials are stored locally at `~/.config/temporal-cortex/credentials.json`. 
 |----------|----------|-------------|
 | `GOOGLE_CLIENT_ID` | For Google | Google OAuth Client ID |
 | `GOOGLE_CLIENT_SECRET` | For Google | Google OAuth Client Secret |
-| `MICROSOFT_CLIENT_ID` | For Outlook | Azure AD application ID |
+| `MICROSOFT_CLIENT_ID` | For Outlook | Azure AD application (client) ID |
+| `MICROSOFT_CLIENT_SECRET` | For Outlook | Azure AD client secret |
 | `TIMEZONE` | No | IANA timezone override |
 | `WEEK_START` | No | `"monday"` (default) or `"sunday"` |
 

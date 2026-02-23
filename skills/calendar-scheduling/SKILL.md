@@ -7,9 +7,26 @@ compatibility: |-
   Requires npx (Node.js 18+) or Docker for the MCP server. python3 optional (configure/status scripts). Stores OAuth credentials at ~/.config/temporal-cortex/. Works with Claude Code, Claude Desktop, Cursor, Windsurf, and any MCP-compatible client.
 metadata:
   author: billylui
-  version: "0.3.3"
+  version: "0.4.0"
   mcp-server: "@temporal-cortex/cortex-mcp"
-  requires: '{"bins":["npx"],"optional_bins":["python3","docker"],"env":["TIMEZONE","WEEK_START"],"optional_env":["HTTP_PORT","GOOGLE_CLIENT_ID","GOOGLE_CLIENT_SECRET","MICROSOFT_CLIENT_ID"],"credentials":["~/.config/temporal-cortex/credentials.json"]}'
+  requires: '{"bins":["npx"],"optional_bins":["python3","docker"],"env":["TIMEZONE","WEEK_START"],"optional_env":["HTTP_PORT","GOOGLE_CLIENT_ID","GOOGLE_CLIENT_SECRET","MICROSOFT_CLIENT_ID","MICROSOFT_CLIENT_SECRET","GOOGLE_OAUTH_CREDENTIALS","TEMPORAL_CORTEX_TELEMETRY"],"credentials":["~/.config/temporal-cortex/credentials.json","~/.config/temporal-cortex/config.json"]}'
+  openclaw:
+    requires:
+      bins:
+        - npx
+      anyBins:
+        - python3
+        - docker
+      env:
+        - GOOGLE_CLIENT_ID
+        - GOOGLE_CLIENT_SECRET
+        - MICROSOFT_CLIENT_ID
+        - MICROSOFT_CLIENT_SECRET
+        - TIMEZONE
+      config:
+        - ~/.config/temporal-cortex/credentials.json
+        - ~/.config/temporal-cortex/config.json
+    primaryEnv: GOOGLE_CLIENT_ID
 ---
 
 # Calendar Scheduling
@@ -152,7 +169,10 @@ This skill requires the Temporal Cortex MCP server. See [.mcp.json](.mcp.json) f
 
 Layer 1 tools (temporal context, datetime resolution, timezone conversion) work immediately with zero configuration. Calendar tools require a one-time OAuth setup — run the [setup script](scripts/setup.sh) or `npx @temporal-cortex/cortex-mcp auth google`.
 
-**Managed cloud** (for Open Scheduling, dashboard UI, multi-agent coordination):
+**Managed cloud** (no local setup required):
+
+For managed cloud mode, sign up at https://app.temporal-cortex.com to get a hosted MCP endpoint with Bearer token auth. Configure your client with the cloud URL instead of the local npx command -- all 11 tools work identically, with added support for Open Scheduling, dashboard UI, and multi-agent coordination.
+
 ```json
 {
   "mcpServers": {

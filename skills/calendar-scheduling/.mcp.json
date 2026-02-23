@@ -2,7 +2,15 @@
   "mcpServers": {
     "temporal-cortex": {
       "command": "npx",
-      "args": ["-y", "@temporal-cortex/cortex-mcp"]
+      "args": ["-y", "@temporal-cortex/cortex-mcp@0.4.0"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "",
+        "GOOGLE_CLIENT_SECRET": "",
+        "MICROSOFT_CLIENT_ID": "",
+        "MICROSOFT_CLIENT_SECRET": "",
+        "TIMEZONE": "",
+        "WEEK_START": ""
+      }
     }
   }
 }
