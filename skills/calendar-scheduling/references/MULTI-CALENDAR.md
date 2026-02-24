@@ -59,14 +59,14 @@ Credentials are stored locally at `~/.config/temporal-cortex/credentials.json`. 
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `GOOGLE_CLIENT_ID` | For Google | Google OAuth Client ID |
-| `GOOGLE_CLIENT_SECRET` | For Google | Google OAuth Client Secret |
-| `MICROSOFT_CLIENT_ID` | For Outlook | Azure AD application (client) ID |
-| `MICROSOFT_CLIENT_SECRET` | For Outlook | Azure AD client secret |
-| `TIMEZONE` | No | IANA timezone override |
-| `WEEK_START` | No | `"monday"` (default) or `"sunday"` |
+| Variable | When Needed | Description |
+|----------|-------------|-------------|
+| `GOOGLE_CLIENT_ID` | Custom OAuth app only | Google OAuth Client ID (built-in default available) |
+| `GOOGLE_CLIENT_SECRET` | Custom OAuth app only | Google OAuth Client Secret (built-in default available) |
+| `MICROSOFT_CLIENT_ID` | Custom OAuth app only | Azure AD application (client) ID (built-in default available) |
+| `MICROSOFT_CLIENT_SECRET` | Custom OAuth app only | Azure AD client secret (built-in default available) |
+| `TIMEZONE` | Optional | IANA timezone override (auto-detected if not set) |
+| `WEEK_START` | Optional | `"monday"` (default) or `"sunday"` |
 
 CalDAV providers need no environment variables — authentication is interactive.
 

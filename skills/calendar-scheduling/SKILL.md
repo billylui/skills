@@ -1,15 +1,17 @@
 ---
 name: calendar-scheduling
 description: |-
-  Calendar scheduling for AI agents. Resolves natural language times, merges availability across Google, Outlook, and CalDAV calendars, detects conflicts, expands recurrence rules (RRULE), and books slots atomically with Two-Phase Commit safety. Use when scheduling meetings, checking availability, resolving datetime expressions, or managing calendar events.
+  Schedule meetings, check availability, and manage calendar events across Google, Outlook, and CalDAV. Resolves natural language times and timezones, finds free slots, detects conflicts, expands recurring events, and books with conflict prevention. Use when finding free time, scheduling appointments, checking who is busy, or converting between timezones.
 license: MIT
 compatibility: |-
   Requires npx (Node.js 18+) or Docker for the MCP server. python3 optional (configure/status scripts). Stores OAuth credentials at ~/.config/temporal-cortex/. Works with Claude Code, Claude Desktop, Cursor, Windsurf, and any MCP-compatible client.
 metadata:
   author: billylui
-  version: "0.4.0"
+  version: "0.4.3"
   mcp-server: "@temporal-cortex/cortex-mcp"
-  requires: '{"bins":["npx"],"optional_bins":["python3","docker"],"env":["TIMEZONE","WEEK_START"],"optional_env":["HTTP_PORT","GOOGLE_CLIENT_ID","GOOGLE_CLIENT_SECRET","MICROSOFT_CLIENT_ID","MICROSOFT_CLIENT_SECRET","GOOGLE_OAUTH_CREDENTIALS","TEMPORAL_CORTEX_TELEMETRY"],"credentials":["~/.config/temporal-cortex/credentials.json","~/.config/temporal-cortex/config.json"]}'
+  homepage: "https://github.com/billylui/temporal-cortex-skill"
+  repository: "https://github.com/billylui/temporal-cortex-skill"
+  requires: '{"bins":["npx"],"optional_bins":["python3","docker"],"optional_env":["TIMEZONE","WEEK_START","HTTP_PORT","GOOGLE_CLIENT_ID","GOOGLE_CLIENT_SECRET","MICROSOFT_CLIENT_ID","MICROSOFT_CLIENT_SECRET","GOOGLE_OAUTH_CREDENTIALS","TEMPORAL_CORTEX_TELEMETRY"],"credentials":["~/.config/temporal-cortex/credentials.json","~/.config/temporal-cortex/config.json"]}'
   openclaw:
     requires:
       bins:
@@ -17,16 +19,9 @@ metadata:
       anyBins:
         - python3
         - docker
-      env:
-        - GOOGLE_CLIENT_ID
-        - GOOGLE_CLIENT_SECRET
-        - MICROSOFT_CLIENT_ID
-        - MICROSOFT_CLIENT_SECRET
-        - TIMEZONE
       config:
         - ~/.config/temporal-cortex/credentials.json
         - ~/.config/temporal-cortex/config.json
-    primaryEnv: GOOGLE_CLIENT_ID
 ---
 
 # Calendar Scheduling
